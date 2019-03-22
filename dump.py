@@ -36,10 +36,17 @@ def find_app(app_name_or_id, device_id, device_ip):
         fatal('unable to find device')
 
     try:
-        app = next(app for app in dev.enumerate_applications() if
-                   app_name_or_id == app.identifier or
-                   app_name_or_id == app.name)
+        if app_name_or_id == "list":
+            print('installed app:')
+            for app in dev.enumerate_applications():
+                print('%s (%s)' % (app.name, app.identifier))
+            sys.exit(1)
+        else:
+            app = next(app for app in dev.enumerate_applications() if
+                app_name_or_id == app.identifier or
+                app_name_or_id == app.name)
     except:
+        sys.exit(1)
         print('app "%s" not found' % app_name_or_id)
         print('installed app:')
         for app in dev.enumerate_applications():
