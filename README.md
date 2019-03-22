@@ -15,6 +15,7 @@ Recommended frida version: > 12.0
 No SSH required. Just `pip install frida`
 
 ## Example
+Use `./dump.py list` to view all applications installed on the device
 
 ```
 ➜  frida-ipa-dump git:(master) ./dump.py hackertracker
